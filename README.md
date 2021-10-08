@@ -28,3 +28,5 @@ of images to a client, let the client label each of the data, and store that lab
 • You are free to choose whatever images you want to build you set of images (you need around 20
 images). Half of this images must represent hot-dogs.
 • Choose small size image
+
+https://mootse.telecom-st-etienne.fr/pluginfile.php/55459/mod_resource/content/3/lab2.pdf
