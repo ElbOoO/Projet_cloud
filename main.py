@@ -15,16 +15,17 @@ queue = sqs.get_queue_by_name(QueueName='test')
 a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 print('entrez plusieurs entier : ')
 
+
 response = queue.send_message(MessageBody='boto3', MessageAttributes={
-        'entier1': {
+        'entier': {
             'DataType': 'Number',
             'StringValue': '5'
         },
-        'entier2': {
+        'entier1': {
             'DataType': 'Number',
             'StringValue': '3'
         },
-        'entier3': {
+        'entier2': {
             'DataType': 'Number',
             'StringValue': '6'
         }
@@ -34,11 +35,11 @@ response = queue.send_message(MessageBody='boto3', MessageAttributes={
 
 
 # Process messages by printing out body and optional author name
-for message in queue.receive_messages(MessageAttributeNames=['Author']):
+for message in queue.receive_messages(MessageAttributeNames=['entier1']):
     # Get the custom author message attribute if it was set
     author_text = ''
     if message.message_attributes is not None:
-        author_name = message.message_attributes.get('Author').get('StringValue')
+        author_name = message.message_attributes.get('entier1').get('StringValue')
 
         if author_name:
             author_text = ' ({0})'.format(author_name)
