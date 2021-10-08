@@ -12,22 +12,49 @@ sqs = boto3.resource('sqs')
 
 # Get the queue
 queue = sqs.get_queue_by_name(QueueName='test')
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+#queue.purge()
 print('entrez plusieurs entier : ')
+a = [int(x) for x in input().split()]
+print(a);
 
 
 response = queue.send_message(MessageBody='boto3', MessageAttributes={
-        'entier': {
-            'DataType': 'Number',
-            'StringValue': '5'
-        },
         'entier1': {
             'DataType': 'Number',
-            'StringValue': '3'
+            'StringValue': str(a[0])
+
         },
         'entier2': {
             'DataType': 'Number',
-            'StringValue': '6'
+            'StringValue': str(a[1])
+        },
+        'entier3': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier4': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier5': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier6': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier7': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier8': {
+            'DataType': 'Number',
+            'StringValue': '0'
+        },
+        'entier9': {
+            'DataType': 'Number',
+            'StringValue': '0'
         }
     },)
 
