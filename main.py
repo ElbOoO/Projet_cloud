@@ -4,77 +4,154 @@
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-import boto3;
-
+import boto3
+import time
 
 # Get the service resource
 sqs = boto3.resource('sqs')
-
 # Get the queue
 queue = sqs.get_queue_by_name(QueueName='test')
-#queue.purge()
 print('entrez plusieurs entier : ')
 a = [int(x) for x in input().split()]
-print(a);
+print(a)
+print(len(a))
+#queue.purge()
+queue = sqs.get_queue_by_name(QueueName='test')
+
+if len(a)>0:
+    entier1 = str(a[0])
+else :
+    entier1 =0
+if len(a)>1:
+    entier2 = str(a[1])
+else:
+    entier2 = 0
+if len(a)>2:
+    entier3 = str(a[2])
+else:
+    entier3 = 0
+if len(a)>3:
+    entier4 = str(a[3])
+else :
+    entier4 =0
+if len(a)>4:
+    entier5 = str(a[4])
+else :
+    entier5 =0
+if len(a)>5:
+    entier6 = str(a[5])
+else :
+    entier6 =0
+if len(a)>6:
+    entier7 = str(a[6])
+else :
+    entier7 =0
+if len(a)>7:
+    entier8 = str(a[7])
+else :
+    entier8 =0
+if len(a)>8:
+    entier9 = str(a[8])
+else :
+    entier9 =0
+if len(a)>9:
+    entier10 = str(a[9])
+else :
+    entier10 =0
+
+
 
 
 response = queue.send_message(MessageBody='boto3', MessageAttributes={
         'entier1': {
             'DataType': 'Number',
-            'StringValue': str(a[0])
+            'StringValue': str(entier1)
 
         },
         'entier2': {
             'DataType': 'Number',
-            'StringValue': str(a[1])
+            'StringValue': str(entier2)
         },
         'entier3': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier3)
         },
         'entier4': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier4)
         },
         'entier5': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier5)
         },
         'entier6': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier6)
         },
         'entier7': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier7)
         },
         'entier8': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier8)
         },
         'entier9': {
             'DataType': 'Number',
-            'StringValue': '0'
+            'StringValue': str(entier9)
         }
     },)
 
 
+toto = True
+while (toto):
+    time.sleep(1)
+    print("waiting for message to come")
+    for message in queue.receive_messages(MessageAttributeNames=['All']):
+        # Get the custom author message attribute if it was set
+        author_text = ''
+        if message.message_attributes is not None:
+            entier1 = message.message_attributes.get('entier1').get('StringValue')
+            entier2 = message.message_attributes.get('entier2').get('StringValue')
+            entier3 = message.message_attributes.get('entier3').get('StringValue')
+            entier4 = message.message_attributes.get('entier4').get('StringValue')
+            entier5 = message.message_attributes.get('entier5').get('StringValue')
+            entier6 = message.message_attributes.get('entier6').get('StringValue')
+            entier7 = message.message_attributes.get('entier6').get('StringValue')
+            entier8 = message.message_attributes.get('entier6').get('StringValue')
+            entier9 = message.message_attributes.get('entier6').get('StringValue')
+            toto = False
+            message.delete()
+
+        # Print out the body and author (if set)
+        print('Hello, ' + entier1 + entier2)
+sum = int(entier1) + int(entier2) + int(entier3) + int(entier4) + int(entier5) + int(entier6)+ int(entier7) + int(entier8) + int(entier9)
+
+queue2 = sqs.get_queue_by_name(QueueName='reponse')
+response = queue2.send_message(MessageBody='boto3', MessageAttributes={
+        'entier1': {
+            'DataType': 'Number',
+            'StringValue': str(sum)
+        }
+    },)
+
+toto2 = True
+while (toto2):
+    time.sleep(1)
+    print("waiting for message to come")
+    for message in queue2.receive_messages(MessageAttributeNames=['All']):
+        # Get the custom author message attribute if it was set
+        author_text = ''
+        if message.message_attributes is not None:
+            reponse = message.message_attributes.get('entier1').get('StringValue')
+            toto2 = False
+            message.delete()
+
+        # Print out the body and author (if set)
+        print('vois tu la réponse , ' + reponse)
 
 
-# Process messages by printing out body and optional author name
-for message in queue.receive_messages(MessageAttributeNames=['entier1']):
-    # Get the custom author message attribute if it was set
-    author_text = ''
-    if message.message_attributes is not None:
-        author_name = message.message_attributes.get('entier1').get('StringValue')
-
-        if author_name:
-            author_text = ' ({0})'.format(author_name)
-
-    # Print out the body and author (if set)
-    print('Hello, '+ author_name )
-
-    # Let the queue know that the message is processed
-    message.delete()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+
