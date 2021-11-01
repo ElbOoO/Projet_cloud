@@ -27,12 +27,13 @@ while (toto):
             message.delete()
 
         # Print out the body and author (if set)
-        print('message came, ' + entier1 + entier2)
+        print('Le message est bien arrivé, on calcul la somme :')
 #file = open("monfichier.txt", "w")
 #file.write(": Reception du fichier")
 
 
 sum = int(entier1) + int(entier2) + int(entier3) + int(entier4) + int(entier5) + int(entier6)+ int(entier7) + int(entier8) + int(entier9)
+print('la somme est égale à : ' +str(sum))
 
 queue2 = sqs.get_queue_by_name(QueueName='reponse')
 response = queue2.send_message(MessageBody='boto3', MessageAttributes={
@@ -41,6 +42,8 @@ response = queue2.send_message(MessageBody='boto3', MessageAttributes={
             'StringValue': str(sum)
         }
     },)
+print('Reponse bien envoyé ')
+
 #file.write(time.gmtime()+": Envoie du fichier")
 
 #file.close()
