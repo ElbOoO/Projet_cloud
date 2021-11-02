@@ -1,9 +1,20 @@
+import datetime
 
 import boto3
 import time
+import os
+from time import strftime
+
 sqs = boto3.resource('sqs')
 # Get the queue
 queue = sqs.get_queue_by_name(QueueName='test')
+
+bucket_name ='cloudcomputing-i-pro'
+
+client_s3 =boto3.client(
+    's3'
+)
+aujour = datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S')
 
 
 toto = True
@@ -28,12 +39,15 @@ while (toto):
 
         # Print out the body and author (if set)
         print('Le message est bien arrivé, on calcul la somme :')
-#file = open("monfichier.txt", "w")
-#file.write(": Reception du fichier")
+file = open(os.getcwd() +aujour +"log.txt", "w")
+file.write("\n"+(datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S'))+': reception des données ')
+
 
 
 sum = int(entier1) + int(entier2) + int(entier3) + int(entier4) + int(entier5) + int(entier6)+ int(entier7) + int(entier8) + int(entier9)
 print('la somme est égale à : ' +str(sum))
+file.write("\n"+(datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S')))
+file.write(': somme calculée = '+ str(sum) )
 
 queue2 = sqs.get_queue_by_name(QueueName='reponse')
 response = queue2.send_message(MessageBody='boto3', MessageAttributes={
@@ -44,6 +58,11 @@ response = queue2.send_message(MessageBody='boto3', MessageAttributes={
     },)
 print('Reponse bien envoyé ')
 
-#file.write(time.gmtime()+": Envoie du fichier")
+file.write("\n"+str(datetime.datetime.today().strftime('%Y-%m-%d-%H-%M-%S'))+": Envoi du fichier")
 
-#file.close()
+file.close()
+client_s3.upload_file(
+        os.getcwd()+aujour+"log.txt",
+        bucket_name,
+        "log/"+aujour+'log.txt'
+)
