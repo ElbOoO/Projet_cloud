@@ -4,7 +4,7 @@ const AWS = require('aws-sdk');
 // INITIALISATION DU BUCKET S3 AWS
 AWS.config.region = 'us-east-1';
 
-AWS.config.credentials = new AWS.Credentials('ASIA2OU3CVNSKAZR2SML', '3R2jiA8BisNmDfjYcjCXn8SYDfVNOEkN53G0660Z', 'FwoGZXIvYXdzEIT//////////wEaDP0mNUf9RwPMBNn85yK6AaGPWhcKhcYljSoMIESqbbUG5BiqyeUn2Pv1/X7GQ092jCEHxAJENZ04tiLfwFBynbumd+eW5RRsjvt8ibZlDiwdSne012MGI9YQKWw8wfa2uEFNj6aUZSU5CsudzdokHINUj/yQ/R8vwqVW9QlqVlDg1RmNvWMj7cZyPyf4v+qbqfPtTzn5IT8LKQxZIKcELgDJxAYHVBhybIY1hLO+bc9sSllmTfbpIWADK2wXEKaY2wJvdT0j+jJd1CiFgbmMBjItUHvYbQUqO20RMCyJL2CpAxnO/swSjVJuhTIElOmXxeaa/9O8+99MuaD/oqMB');
+AWS.config.credentials = new AWS.Credentials('ASIA2OU3CVNSBYKEAZ6X', 'rjA4SL7IOJLpxxqPMnpOyxwFUaWJEE7hJSQVoVYU', 'FwoGZXIvYXdzEIb//////////wEaDKJqQLKOwOIh63wIwSK6AYPxwo38cSpMlT3dAQiolJpu23Y+5GwHS9WMc5+HSPQkKt57zG+EcKw8cP92Tl3wjsJsmm834y4Tzz1sb/ysCYznOmbpOV3Shsm9c5YtQMF1cXR3GFS1qaMHBicw6Nluk2ffvfmxDs8PbkQ9wZ2uHU6dCsPcNTN5H0Y5hchK3QS3QQvjR3K73YnfBgjKiO/a6jwpZjhY9/T19iW7RO+NYIMKybb/3Pud69euVxcSesV3k2cr+ojLlWpv8Ciht7mMBjItCVNKuriixNS4s4njWeM6b0yLODdhmeP9L0UGUGcG/H4T8gnUD0Rd2EExtPAA');
 
 AWS.config.credentials.get(function(err) {
     if (err) alert(err);

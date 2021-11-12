@@ -3,7 +3,6 @@
 # Press Maj+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
-
 import boto3
 import time
 
@@ -120,7 +119,7 @@ while (toto2):
             message.delete()
 
         # Print out the body and author (if set)
-        print('vois tu la réponse , ' + reponse)
+        print('La réponse est : ' + reponse)
 
 
 
