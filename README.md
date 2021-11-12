@@ -30,6 +30,9 @@ of images to a client, let the client label each of the data, and store that lab
 • You are free to choose whatever images you want to build you set of images (you need around 20 images). Half of these images must represent hot-dogs.   
 • Choose small size image   
 
+# Demonstration videos #   
+https://youtube.com/playlist?list=PLeaWEbsy_j2_XKno6feYrWuUaO718RvlZ
+
 # Our group #   
 👤 Grégoire BIRON   
 👤 Ruben FELICIANO   
