@@ -36,4 +36,4 @@ of images to a client, let the client label each of the data, and store that lab
 👤 Thomas GAGNAIRE   
 
 # Full subject #
-https://mootse.telecom-st-etienne.fr/pluginfile.php/55459/mod_resource/content/3/lab2.pdf
+https://mootse.telecom-st-etienne.fr/mod/resource/view.php?id=28548
