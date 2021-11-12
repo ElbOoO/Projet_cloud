@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website Home Page</title>
+	<link rel="stylesheet" type="text/css" href="cbo.css"/>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src = "bundle.js"></script>
+   <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+   
+</head>
+
+<body>
+   <h1>Check images that are Hot-Dogs</h1>
+   <div class="container">
+     <div class="box"><img class="fit-picture" src="" alt="" id="img1">
+       <figcaption><input class="checkbox" type="checkbox" id="check1"></figcaption>
+     </div>
+     <div class="box"><img class="fit-picture" src="" alt="" id="img2">
+       <figcaption><input class="checkbox" type="checkbox" id="check2"></figcaption>
+     </div>
+     <div class="box"><img class="fit-picture" src="" alt="" id="img3">
+       <figcaption><input class="checkbox" type="checkbox" id="check3"></figcaption>
+     </div>
+     <div class="box"><img class="fit-picture" src="" alt="" id="img4">
+       <figcaption><input class="checkbox" type="checkbox" id="check4"></figcaption>
+     </div>
+   </div>
+   
+   <div class="center">
+      <button onclick="reload()" >Reroll</button>
+      <button onclick="recordCheckBoxes()">Submit</button>
+      <form action="http://projet-hot-dogs.s3.amazonaws.com/" method="post" enctype="multipart/form-data">
+        Ajouter des Hot-Dogs: <br/>
+        <input type="hidden" name="key" id="nomUpload" value="" />
+        <input type="hidden" name="acl" value="public-read" />
+        <input type="hidden" name="success_action_redirect" value="https://projet-hot-dogs.s3.amazonaws.com/${filename}" />
+        <input type="hidden" name="Content-Type" value="image/png" />
+        <input type="file" name="file" /> <br/>
+        <!-- The elements after this will be ignored -->
+        <input type="submit" name="submit" value="Upload to Amazon S3" />
+      </form>
+   </div>
+</body>
+
+<footer>
+
+</footer>
+</html>
+
+
+
